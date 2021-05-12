@@ -27,9 +27,11 @@ def assert_function(user):
 class RunBinSh(object):
     """Runs bin sh."""
     def __reduce__(self):
+        """Reduces."""
         return (subprocess.Popen, (('/bin/sh',),))
 
     def random_num(self):
+        """Randomizes."""
         return 42
 
 
