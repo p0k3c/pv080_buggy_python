@@ -10,14 +10,14 @@ import flask
 
 
 # Input injection
-def transcode_file(request, filename):
+def transcode_file(filename):
     """Transfers code file."""
     command = 'ffmpeg -i "{source}" output_file.mpg'.format(source=filename)
     subprocess.call(command, shell=True)  # a bad idea!
 
 
 # Assert statements
-def assert_function(request, user):
+def assert_function(user):
     """Asserts function."""
     assert user.is_admin, 'user does not have access'
     # secure code...
