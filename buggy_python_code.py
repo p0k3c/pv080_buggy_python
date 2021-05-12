@@ -1,3 +1,4 @@
+"""Somehow malicious code."""
 # contains bunch of buggy examples
 # taken from https://hackernoon.com/10-common-security-gotchas-in-python-and-how-to-avoid-them-e19fbe265e03
 import cPickle
@@ -16,6 +17,7 @@ def transcode_file(request, filename):
 
 # Assert statements
 def assert_function(request, user):
+    """Asserts function."""
     assert user.is_admin, 'user does not have access'
     # secure code...
 
@@ -25,6 +27,9 @@ class RunBinSh(object):
     """Runs bin sh."""
     def __reduce__(self):
         return (subprocess.Popen, (('/bin/sh',),))
+
+    def random_num(self):
+        return 42
 
 
 @app.route('/')
