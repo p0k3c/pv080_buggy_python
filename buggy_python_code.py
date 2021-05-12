@@ -1,11 +1,14 @@
 """Somehow malicious code."""
 # contains bunch of buggy examples taken from:
 # https://hackernoon.com/10-common-security-gotchas-in-python-and-how-to-avoid-them-e19fbe265e03
-import cPickle
+
 import subprocess
+import cPickle
 import base64
 import subprocess
 import flask
+import html
+
 
 
 # Input injection
@@ -37,8 +40,8 @@ class RunBinSh(object):
 @app.route('/')
 def index():
     """Indexes."""
-    # module = flask.request.args.get("module")
-    module = "no_longer_a_problem"
+    module = flask.request.args.get("module")
+    module = html.escape(module)
     exec("import urllib%s as urllib" % module)  # Noncompliant
 
 
