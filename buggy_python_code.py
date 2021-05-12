@@ -9,24 +9,27 @@ import flask
 
 # Input injection
 def transcode_file(request, filename):
+    """Transfers code file."""
     command = 'ffmpeg -i "{source}" output_file.mpg'.format(source=filename)
     subprocess.call(command, shell=True)  # a bad idea!
 
 
 # Assert statements
-def foo(request, user):
+def assert_function(request, user):
     assert user.is_admin, 'user does not have access'
     # secure code...
 
 
 # Pickles
 class RunBinSh(object):
+    """Runs bin sh."""
     def __reduce__(self):
         return (subprocess.Popen, (('/bin/sh',),))
 
 
 @app.route('/')
 def index():
+    """Indexes."""
     module = flask.request.args.get("module")
     exec("import urllib%s as urllib" % module)  # Noncompliant
 
